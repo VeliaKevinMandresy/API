@@ -4,6 +4,7 @@ function login($username, $password)
 {
     //login form action url
     $url = "https://demo.rocket.chat/home";
+
     $postinfo = "email=".$username."&password=".$password;
     
     $ch = curl_init();
@@ -21,7 +22,7 @@ function login($username, $password)
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 0);
     
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $postinfo);
     curl_exec($ch);
@@ -32,8 +33,10 @@ function login($username, $password)
 
     //page with the content I want to grab
     curl_setopt($ch, CURLOPT_URL, $url);
-    
+
     $html = curl_exec($ch);
+    //var_dump (json_decode($html));
+    //var_dump(file_get_contents($ch));
     curl_close($ch);
 
     if ($http_status == 200)
@@ -42,5 +45,11 @@ function login($username, $password)
         echo $http_status . " Vous avez un probleme\n";
 }
 
-login("kevin.mandresy.velia", "Mandresy9");
+function listeChanel()
+{
+    
+}
+
+login("velia_k@etna-alternance.net", "Mandresy95");
+
 ?>
