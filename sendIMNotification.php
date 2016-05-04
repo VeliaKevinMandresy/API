@@ -23,13 +23,9 @@ function login($password, $username)
     
     $html = curl_exec($ch);
     curl_close($ch);
-
-    //Display value of $http_status (Debug)
-    /* if ($http_status == 200)
-         echo '\n[ '. $http_status .' ]' . " Vous avez reussi a vous connecter au site Rocket Chat\n";
-     else
-     echo  "\n". $http_status . " Vous avez un probleme\n";*/
 }
+
+function 
 
 login("Mandresy95", "kevin.mandresy.velia");
 
