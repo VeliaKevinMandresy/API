@@ -1,5 +1,8 @@
 <?php
-
+/*
+** This fonction allowed to connect user a rocket chat 
+** with password and username
+*/
 function login($password, $username)
 {
     //login form action url
@@ -14,6 +17,7 @@ function login($password, $username)
     curl_setopt($ch, CURLOPT_HEADER, false);
     curl_setopt($ch, CURLOPT_NOBODY, false);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $postinfo);
     curl_setopt($ch, CURLOPT_COOKIEJAR, realpath($cookie));
@@ -30,9 +34,13 @@ function login($password, $username)
 
     // function ListeChanel Call
     ListeChanel();
+    //join_chanel();
     unlink($cookie);
 }
 
+/*
+**This function allowed to display list of Chanel
+*/
 function ListeChanel()
 {
     $url = 'https://demo.rocket.chat/api/publicRooms';
@@ -46,11 +54,38 @@ function ListeChanel()
     $ch = curl_init();
 
     curl_setopt($ch, CURLOPT_COOKIESESSION, true);
-    //curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
     curl_setopt($ch, CURLOPT_POSTFIELDS, $postinfo);
-    //curl_setopt($ch, CURLOPT_HTTPHEADER, $postinfo);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $postinfo);
+
+    $json = curl_setopt($ch, CURLOPT_URL, $url);
+    $json_decode = json_decode($json);
+    
+    $response = curl_exec($ch);
+    curl_close($ch);
+}
+
+/* 
+**This function allowed to Join a Room
+*/
+function join_chanel()
+{
+    $url = 'https://demo.rocket.chat/api/rooms/x4pRahjs5oYcTYu7i/join';
+    $MyToken = "05C8yJjVWZiGH7YetCao6951z00R1VuUCInaeMVhyod";
+    $MySecretPwd = "RwsYyF2kSdPgc7ppE";
+    $postinfo = array(
+        "X-Auth-Token: $MyToken",
+        "X-User-Id: $MySecretPwd",
+    );
+    //$postinfo2 = $postinfo . '"' . '{}' .'"';
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_COOKIESESSION, true);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+    //    curl_setopt($ch, CURLOPT_POSTFIELDS, $postinfo);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $postinfo2);
 
     curl_setopt($ch, CURLOPT_URL, $url);
     
@@ -58,6 +93,6 @@ function ListeChanel()
     curl_close($ch);
 }
 
-login("Mandresy95", "kevin.mandresy.velia");
-
+//login("Mandresy95", "kevin.mandresy.velia");
+ListeChanel();
 ?>
