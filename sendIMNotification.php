@@ -34,7 +34,7 @@ function login($password, $username)
 
     // function ListeChanel Call
     ListeChanel();
-    //join_chanel();
+    join_chanel();
     unlink($cookie);
 }
 
@@ -78,21 +78,20 @@ function join_chanel()
         "X-Auth-Token: $MyToken",
         "X-User-Id: $MySecretPwd",
     );
-    //$postinfo2 = $postinfo . '"' . '{}' .'"';
+    $postinfo2 ='"' . '{}' .'"';
+    
     $ch = curl_init();
 
     curl_setopt($ch, CURLOPT_COOKIESESSION, true);
     curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-    //    curl_setopt($ch, CURLOPT_POSTFIELDS, $postinfo);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $postinfo2);
-
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $postinfo2);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $postinfo);
     curl_setopt($ch, CURLOPT_URL, $url);
     
     $response = curl_exec($ch);
     curl_close($ch);
 }
 
-//login("Mandresy95", "kevin.mandresy.velia");
-ListeChanel();
+login("Mandresy95", "kevin.mandresy.velia");
 ?>
