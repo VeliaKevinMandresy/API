@@ -6,7 +6,7 @@ $Password = "Mandresy95"; // Mon mot de passe
 $url = "https://demo.rocket.chat/"; // URL de la demo Rocket Chat
 //$idRooms = "GENERAL"; // Room par default
 $idRooms = "whfpPjE2okzgBHLv5"; // Nom de Room "Anime"
-$message = "Bonjour, je suis kevin un ami a TOTO et j'adore les animes";
+$message = "Je suis un pote à Gé et j'adore les animes!";
 //$message = "Goodnight everyone"; //Message test
 
 $API = new API_Rest(); //Class API_Rest fonctions.php
