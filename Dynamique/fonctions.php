@@ -39,7 +39,7 @@ class API_Rest
     }
 
     /*
-    ** Fonction permettant de rejoindre une Room en fonction
+    ** Fonction permettant de rejoindre une Room en fonction de son ID
     */
     public function join($idRooms)
     {
@@ -49,5 +49,16 @@ class API_Rest
         $join = $this->Curl->post($this->url."rooms/$idRooms/join");
 
         return $join;
+    }
+
+    /*
+    ** Fonction permettant d'envoyer un message predefinie a  une Room rejoin au prealable
+    */
+    public function sendMessage($idRooms, $message)
+    {
+        $this->Curl->setHeader('X-Auth-Token', $this->authToken);
+        $this->Curl->setHeader('X-User-Id', $this->userId);
+        $sendMessage = $this->Curl->post($this->url."rooms/$idRooms/send",array('msg' => $message));
+        return $sendMessage;
     }
 }
