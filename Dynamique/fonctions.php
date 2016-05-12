@@ -1,6 +1,6 @@
 <?php
+require_once 'Curl.php';
 
-require 'Curl.php';
 class API_Rest
 {
     function __construct()
@@ -58,7 +58,13 @@ class API_Rest
     {
         $this->Curl->setHeader('X-Auth-Token', $this->authToken);
         $this->Curl->setHeader('X-User-Id', $this->userId);
-        $sendMessage = $this->Curl->post($this->url."rooms/$idRooms/send",array('msg' => $message));
+        $route = $this->url."rooms/$idRooms/send";
+        $message = array('msg' => $message);
+        $sendMessage = $this->Curl->post($route ,$message);
+
+        //test
+        print_r($messageTest);
         return $sendMessage;
     }
 }
+?>
