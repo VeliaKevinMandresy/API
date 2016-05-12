@@ -10,11 +10,11 @@ $message = "Bonjour, je suis kevin un ami a TOTO et j'adore les animes";
 
 
 $API = new API_Rest(); //Class API_Rest fonctions.php
-$login = $API->login($Username, $Password, $url);
+/* $login = $API->login($Username, $Password, $url);
+   $joinRoom = $API->join($idRooms);
+   $sendMsg = $API->sendMessage($idRooms, $message); */
+
 $listRooms = $API->publicRooms(); 
-$joinRoom = $API->join($idRooms);
-$sendMsg = $API->sendMessage($idRooms, $message);
-    
 // Affichage
-print_r($listRooms);O
+print_r($listRooms);
 ?>
