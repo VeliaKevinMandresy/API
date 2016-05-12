@@ -1,4 +1,4 @@
-# MonPotager
+#MonPotager API ROCKET CHAT
 
 ##Objectif:
 Ecrire un programme PHP réalisant la publication d'un message dans un canal de discussion de messagerie instantanée.
