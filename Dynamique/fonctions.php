@@ -47,6 +47,5 @@ class API_Rest
         $this->Curl->setHeader('X-Auth-Token', $this->authToken);
         $this->Curl->setHeader('X-User-Id', $this->userId);
         $join = $this->Curl->post($this->url."rooms/$idRooms/join");
-        return $join;
     }
 }
