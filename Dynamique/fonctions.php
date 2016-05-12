@@ -46,7 +46,8 @@ class API_Rest
         // -- setHeader -> Methode provenant de Curl.php
         $this->Curl->setHeader('X-Auth-Token', $this->authToken);
         $this->Curl->setHeader('X-User-Id', $this->userId);
-        $join = $this->Curl->post($this->url."rooms/$idRooms/join");
+        $route = $this->url."rooms/$idRooms/join";
+        $join = $this->Curl->post($route);
 
         return $join;
     }
@@ -62,8 +63,6 @@ class API_Rest
         $message = array('msg' => $message);
         $sendMessage = $this->Curl->post($route ,$message);
 
-        //test
-        print_r($messageTest);
         return $sendMessage;
     }
 }
