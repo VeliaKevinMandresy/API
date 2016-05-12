@@ -26,7 +26,7 @@ class API_Rest
     }
     
     /*
-    ** Fonction qui permet la recuperation des Rooms en fonctions du Token et Id du  
+    ** Fonction qui permet la recuperation des Rooms en fonction du Token et de l'Id de l'utilisateur
     */
     public function publicRooms()
     {
@@ -36,5 +36,17 @@ class API_Rest
         $listRooms = $this->Curl->get($this->url.'publicRooms');
         
         return $listRooms;
+    }
+
+    /*
+    ** Fonction permettant de rejoindre une Room en fonction
+    */
+    public function join($idRooms)
+    {
+        // -- setHeader -> Methode provenant de Curl.php
+        $this->Curl->setHeader('X-Auth-Token', $this->authToken);
+        $this->Curl->setHeader('X-User-Id', $this->userId);
+        $join = $this->Curl->post($this->url."rooms/$idRooms/join");
+        return $join;
     }
 }
