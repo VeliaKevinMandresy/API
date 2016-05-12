@@ -4,18 +4,17 @@ require_once('fonctions.php');//Ajout du fichier contenant les fonctions demande
 $Username = "kevin.mandresy.velia"; // Mon nom d'utilisateur pour la connexion
 $Password = "Mandresy95"; // Mon mot de passe
 $url = "https://demo.rocket.chat/"; // URL de la demo Rocket Chat
-$idRooms = "GENERAL"; // Room par default
-$idRooms = ""; // Room Test
+//$idRooms = "GENERAL"; // Room par default
+$idRooms = "whfpPjE2okzgBHLv5"; // Nom de Room "Anime"
+$message = "Bonjour, je suis kevin un ami a TOTO et j'adore les animes";
+
 
 $API = new API_Rest(); //Class API_Rest fonctions.php
 $login = $API->login($Username, $Password, $url);
-$publicRooms = $API->publicRooms(); 
+$listRooms = $API->publicRooms(); 
 $joinRoom = $API->join($idRooms);
-
+$sendMsg = $API->sendMessage($idRooms, $message);
+    
 // Affichage
-print_r($login);
-print_r("\n");
-print_r($joinRoom);
-print_r("\n");
-print_r($sendMsg);
+print_r($listRooms);O
 ?>
