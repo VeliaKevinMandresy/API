@@ -7,7 +7,7 @@ class API_Rest
     {
         $this->Curl = new Curl();
     }
-       
+
     /*
     ** Fonction de login qui prend en parmettre: Nom Utilisateur, Mdp & url (Rocket chat)
     */
@@ -24,7 +24,7 @@ class API_Rest
         }
         return $login;
     }
-    
+
     /*
     ** Fonction qui permet la recuperation des Rooms en fonction du Token et de l'Id de l'utilisateur
     */
@@ -34,7 +34,7 @@ class API_Rest
         $this->Curl->setHeader('X-Auth-Token', $this->authToken);
         $this->Curl->setHeader('X-User-Id', $this->userId);
         $listRooms = $this->Curl->get($this->url.'publicRooms');
-        
+
         return $listRooms;
     }
 
@@ -57,7 +57,7 @@ class API_Rest
     */
     public function sendMessage($idRooms, $message)
     {
-        $this->Curl->setHeader('X-Auth-Token', $this->authToken);
+		$this->Curl->setHeader('X-Auth-Token', $this->authToken);
         $this->Curl->setHeader('X-User-Id', $this->userId);
         $route = $this->url."rooms/$idRooms/send";
         $message = array('msg' => $message);
