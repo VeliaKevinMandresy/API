@@ -1204,6 +1204,7 @@ class CaseInsensitiveArray implements \ArrayAccess, \Countable, \Iterator
      */
     public function valid()
     {
+       // $this->data = null;
         return (bool) !(key($this->data) === null);
     }
     /**
