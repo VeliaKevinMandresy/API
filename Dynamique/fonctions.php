@@ -57,7 +57,7 @@ class API_Rest
     */
     public function sendMessage($idRooms, $message)
     {
-		$this->Curl->setHeader('X-Auth-Token', $this->authToken);
+		  $this->Curl->setHeader('X-Auth-Token', $this->authToken);
         $this->Curl->setHeader('X-User-Id', $this->userId);
         $route = $this->url."rooms/$idRooms/send";
         $message = array('msg' => $message);
